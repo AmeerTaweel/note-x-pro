@@ -12,26 +12,44 @@
         <div id="app">
             <h1 class="text-center">Note<span class="text-primary">X</span>Pro</h1>
             <h1 class="text-center"><small>Keep track of your notes like a pro!</small></h1>
-            <!-- Create new note form-->
-            <div class="new-note">
-                <form>
-                    <div class="form-group">
-                        <label for="note-title">Note Title</label>
-                        <input type="text" class="form-control" id="note-title" placeholder="ex: I went to the beach" v-model="note.title">
-                    </div>
-                    <div class="form-group">
-                        <label for="note-text">Note Text</label>
-                        <textarea class="form-control" id="note-text" placeholder="ex: I really enjoyed with my best friends!" v-model="note.text"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Priority</label><br/>
-                        <input type="radio" name="priority" value="1" v-model="note.priority" checked> Low Priority<br/>
-                        <input type="radio" name="priority" value="2" v-model="note.priority"> Medium Priority<br/>
-                        <input type="radio" name="priority" value="3" v-model="note.priority"> High Priority
-                    </div>
-                    <button type="button" class="btn btn-primary" @click="addNote">Save Note</button>
-                </form>
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- Create new note form-->
+                    <form class="card col-xs-12 col-sm-6">
+                        <fieldset>
+                            <legend>Create New Note:</legend>
+                            <div class="form-group">
+                                <label for="note-title">Note Title</label>
+                                <input type="text" class="form-control" id="note-title" placeholder="ex: I went to the beach" v-model="note.title">
+                            </div>
+                            <div class="form-group">
+                                <label for="note-text">Note Text</label>
+                                <textarea class="form-control" id="note-text" placeholder="ex: I really enjoyed with my best friends!" v-model="note.text"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Priority</label><br/>
+                                <input type="radio" name="priority" value="1" v-model="note.priority" checked> Low Priority<br/>
+                                <input type="radio" name="priority" value="2" v-model="note.priority"> Medium Priority<br/>
+                                <input type="radio" name="priority" value="3" v-model="note.priority"> High Priority
+                            </div>
+                            <button type="button" class="btn btn-primary" @click="addNote">Save Note</button>
+                        </fieldset>
+                    </form>
+                    <!-- Sort notes form-->
+                    <form class="card col-xs-12 col-sm-6">
+                        <fieldset>
+                            <legend>Filter Notes:</legend>
+                            <div class="form-group">
+                                <label>Sort by</label><br/>
+                                <input type="radio" name="sort" value="1" v-model="filter" checked> More important first<br/>
+                                <input type="radio" name="sort" value="2" v-model="filter"> Less important first<br/>
+                            </div>
+                            <button type="button" class="btn btn-primary" @click="sortByFilter">Sort</button>
+                        </fieldset>
+                    </form>
+                </div>
             </div>
+            <!-- Display notes -->
             <div class="container-fluid">
                 <div class="row">
                     <div class="card col-xs-12 col-sm-6 col-md-4" v-for="(note, index) in savedNotes">
@@ -57,7 +75,8 @@
                         priority: 1
                     },
                     // Notes created and saved earlier.
-                    savedNotes: []
+                    savedNotes: [],
+                    filter: 1
                 },
                 methods: {
                     addNote(){
@@ -102,6 +121,21 @@
                     removeNote(index){
                         this.savedNotes.splice(index, 1)
                         console.log(`Removed note with index: ${index}`)
+                    },
+                    sortByFilter(){
+                        const filter = Number(this.filter)
+                        switch(filter){
+                            case 1:
+                                this.savedNotes.sort((a, b) => {
+                                    return b.priority.num - a.priority.num
+                                })
+                                break
+                            case 2:
+                                this.savedNotes.sort((a, b) => {
+                                    return a.priority.num - b.priority.num
+                                })
+                                break
+                        }
                     }
                 }
             })
