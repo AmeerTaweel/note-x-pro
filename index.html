@@ -23,13 +23,19 @@
                         <label for="note-text">Note Text</label>
                         <textarea class="form-control" id="note-text" placeholder="ex: I really enjoyed with my best friends!" v-model="note.text"></textarea>
                     </div>
+                    <div class="form-group">
+                        <label>Priority</label><br/>
+                        <input type="radio" name="priority" value="1" v-model="note.priority" checked> Low Priority<br/>
+                        <input type="radio" name="priority" value="2" v-model="note.priority"> Medium Priority<br/>
+                        <input type="radio" name="priority" value="3" v-model="note.priority"> High Priority
+                    </div>
                     <button type="button" class="btn btn-primary" @click="addNote">Save Note</button>
                 </form>
             </div>
             <div class="container-fluid">
                 <div class="row">
                     <div class="card col-xs-12 col-sm-6 col-md-4" v-for="(note, index) in savedNotes">
-                        <div class="card-content">
+                        <div v-bind:class="note.priority.class" class="card-content">
                             <button class="close" @click="removeNote(index)">&times;</button>
                             <h3 class="text-primary">{{note.title}}</h3>
                             <h6 class="text-muted">{{note.time}}</h6>
@@ -47,7 +53,8 @@
                     // The new note.
                     note: {
                         title: ``,
-                        text: ``
+                        text: ``,
+                        priority: 1
                     },
                     // Notes created and saved earlier.
                     savedNotes: []
@@ -57,16 +64,39 @@
                         // Get the user input.
                         const titleInput = this.note.title
                         const textInput = this.note.text
+                        const priorityInput = Number(this.note.priority)
+                        let computedPriority
+                        switch(priorityInput) {
+                            case 3:
+                                computedPriority = {
+                                    num: priorityInput,
+                                    class: `note-priority-high`
+                                }
+                                break;
+                            case 2:
+                                computedPriority = {
+                                    num: priorityInput,
+                                    class: `note-priority-medium`
+                                }
+                                break;
+                            default:
+                                computedPriority = {
+                                    num: priorityInput,
+                                    class: `note-priority-low`
+                                }
+                        }
                         // Add the note to savedNotes.
                         this.savedNotes.push({
                             title: titleInput,
                             text: textInput,
-                            time: new Date(Date.now()).toLocaleString()
+                            time: new Date(Date.now()).toLocaleString(),
+                            priority: computedPriority
                         })
                         console.log(`New note created.`)
                         this.note = {
                             title: ``,
-                            text: ``
+                            text: ``,
+                            priority: 1
                         }
                     },
                     removeNote(index){
