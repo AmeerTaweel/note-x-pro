@@ -17,11 +17,11 @@
                 <form>
                     <div class="form-group">
                         <label for="note-title">Note Title</label>
-                        <input type="text" class="form-control" id="note-title" placeholder="ex: Went to the beach">
+                        <input type="text" class="form-control" id="note-title" placeholder="ex: Went to the beach" v-model="note.title">
                     </div>
                     <div class="form-group">
-                            <label for="note-text">Note Text</label>
-                            <textarea class="form-control" id="note-text" placeholder="Note body here..."></textarea>
+                        <label for="note-text">Note Text</label>
+                        <textarea class="form-control" id="note-text" placeholder="Note body here..." v-model="note.text"></textarea>
                     </div>
                 </form>
             </div>
@@ -31,7 +31,10 @@
             let app = new Vue({
                 el: `#app`,
                 data: {
-                    
+                    note: {
+                        title: ``,
+                        text: ``
+                    }
                 }
             })
         </script>
