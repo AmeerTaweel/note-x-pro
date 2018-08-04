@@ -30,6 +30,7 @@
                 <div class="row">
                     <div class="card col-xs-12 col-sm-6 col-md-4" v-for="(note, index) in savedNotes">
                         <div class="card-content">
+                            <button class="close" @click="removeNote(index)">&times;</button>
                             <h3 class="text-primary">{{note.title}}</h3>
                             <h6 class="text-muted">{{note.time}}</h6>
                             <p>{{note.text}}</p>
@@ -67,6 +68,10 @@
                             title: ``,
                             text: ``
                         }
+                    },
+                    removeNote(index){
+                        this.savedNotes.splice(index, 1)
+                        console.log(`Removed note with index: ${index}`)
                     }
                 }
             })
