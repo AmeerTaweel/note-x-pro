@@ -17,12 +17,13 @@
                 <form>
                     <div class="form-group">
                         <label for="note-title">Note Title</label>
-                        <input type="text" class="form-control" id="note-title" placeholder="ex: Went to the beach" v-model="note.title">
+                        <input type="text" class="form-control" id="note-title" placeholder="ex: I went to the beach" v-model="note.title">
                     </div>
                     <div class="form-group">
                         <label for="note-text">Note Text</label>
                         <textarea class="form-control" id="note-text" placeholder="Note body here..." v-model="note.text"></textarea>
                     </div>
+                    <button type="button" class="btn btn-primary" @click="addNote">Save Note</button>
                 </form>
             </div>
         </div>
@@ -31,9 +32,30 @@
             let app = new Vue({
                 el: `#app`,
                 data: {
+                    // The new note.
                     note: {
                         title: ``,
                         text: ``
+                    },
+                    // Notes created and saved earlier.
+                    savedNotes: []
+                },
+                methods: {
+                    addNote(){
+                        // Get the user input.
+                        const titleInput = this.note.title
+                        const textInput = this.note.text
+                        // Add the note to savedNotes.
+                        this.savedNotes.push({
+                            title: titleInput,
+                            text: textInput,
+                            time: new Date(Date.now()).toLocaleString()
+                        })
+                        console.log(`New note created.`)
+                        this.note = {
+                            title: ``,
+                            text: ``
+                        }
                     }
                 }
             })
