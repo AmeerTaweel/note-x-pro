@@ -43,6 +43,8 @@
                                 <label>Sort by</label><br/>
                                 <input type="radio" name="sort" value="1" v-model="filter" checked> More important first<br/>
                                 <input type="radio" name="sort" value="2" v-model="filter"> Less important first<br/>
+                                <input type="radio" name="sort" value="3" v-model="filter"> Older first<br/>
+                                <input type="radio" name="sort" value="4" v-model="filter"> Newer first<br/>
                             </div>
                             <button type="button" class="btn btn-primary" @click="sortByFilter">Sort</button>
                         </fieldset>
@@ -109,7 +111,8 @@
                             title: titleInput,
                             text: textInput,
                             time: new Date(Date.now()).toLocaleString(),
-                            priority: computedPriority
+                            priority: computedPriority,
+                            mls: Math.round((new Date()).getTime() / 1000)
                         })
                         console.log(`New note created.`)
                         this.note = {
@@ -125,16 +128,30 @@
                     sortByFilter(){
                         const filter = Number(this.filter)
                         switch(filter){
+                            // More important first.
                             case 1:
                                 this.savedNotes.sort((a, b) => {
                                     return b.priority.num - a.priority.num
                                 })
                                 break
+                            // Less important first.    
                             case 2:
                                 this.savedNotes.sort((a, b) => {
                                     return a.priority.num - b.priority.num
                                 })
                                 break
+                            // Older first.    
+                            case 3:
+                                this.savedNotes.sort((a, b) => {
+                                    return a.mls - b.mls
+                                })
+                                break
+                            // Newer first.      
+                            case 4:
+                                this.savedNotes.sort((a, b) => {
+                                    return b.mls - a.mls
+                                })
+                                break      
                         }
                     }
                 }
