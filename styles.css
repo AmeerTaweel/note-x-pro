@@ -2,3 +2,13 @@
     max-width: 500px;
     margin: 20px;
 }
+
+.card{
+    padding: 10px;
+}
+
+.card-content{
+    border: 1px solid grey; 
+    border-radius: 5px;
+    padding: 10px;
+}

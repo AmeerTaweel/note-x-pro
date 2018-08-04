@@ -21,10 +21,21 @@
                     </div>
                     <div class="form-group">
                         <label for="note-text">Note Text</label>
-                        <textarea class="form-control" id="note-text" placeholder="Note body here..." v-model="note.text"></textarea>
+                        <textarea class="form-control" id="note-text" placeholder="ex: I really enjoyed with my best friends!" v-model="note.text"></textarea>
                     </div>
                     <button type="button" class="btn btn-primary" @click="addNote">Save Note</button>
                 </form>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="card col-xs-12 col-sm-6 col-md-4" v-for="(note, index) in savedNotes">
+                        <div class="card-content">
+                            <h3 class="text-primary">{{note.title}}</h3>
+                            <h6 class="text-muted">{{note.time}}</h6>
+                            <p>{{note.text}}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- Vue.js script -->
