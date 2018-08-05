@@ -1,6 +1,6 @@
 <template>
     <div id="saved-notes">
-        <h1>Saved Notes:</h1>
+        <h2 class="m-20"><span class="text-primary">S</span>aved <span class="text-primary">N</span>otes:</h2>
         <div class="container-fluid">
             <div class="row">
                 <div class="card col-xs-12 col-sm-6 col-md-4" v-for="(note, index) in savedNotes">
@@ -17,12 +17,13 @@
 </template>
 
 <script>
-import Cookies from "../../node_modules/js-cookies"
+import * as Cookies from "js-cookie"
 export default {
     name: "saved-notes",
     data() {
         return {
-            savedNotes: []
+            savedNotes: [],
+            savedNotesPath: `savedNotes`
         }
     },
     methods: {

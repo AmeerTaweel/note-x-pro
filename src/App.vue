@@ -7,6 +7,9 @@
     <button v-if="isDisplayed('saved-notes')" type="button" class="action-btn btn btn-primary" aria-label="Create Note" @click="display('create-note')">
       <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
     </button>
+    <button v-if="isDisplayed('create-note')" type="button" class="action-btn btn btn-primary" aria-label="Create Note" @click="display('saved-notes')">
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    </button>
   </div>
 </template>
 
@@ -47,5 +50,8 @@ export default {
     -moz-box-shadow:2px 4px 10px grey;
     -webkit-box-shadow:2px 4px 10px grey;
     box-shadow:2px 4px 10px grey;
+  }
+  .m-20{
+    margin: 20px;
   }
 </style>
