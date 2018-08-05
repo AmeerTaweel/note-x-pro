@@ -4,9 +4,12 @@
         <title>NoteXPro</title>
         <!-- Vue.js -->
         <script src="https://unpkg.com/vue"></script>
+        <!-- JS Cookie -->
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" href="./styles.css">
+        <!-- Favicon -->
         <link rel="icon" type="image/png" href="./images/favicon.png" />
     </head>
     <body>
@@ -79,7 +82,8 @@
                     },
                     // Notes created and saved earlier.
                     savedNotes: [],
-                    filter: 1
+                    filter: 1,
+                    savedNotesPath: `savedNotes`
                 },
                 methods: {
                     addNote(){
@@ -115,6 +119,7 @@
                             priority: computedPriority,
                             mls: Math.round((new Date()).getTime() / 1000)
                         })
+                        this.saveNotes()
                         console.log(`New note created.`)
                         this.note = {
                             title: ``,
@@ -124,6 +129,7 @@
                     },
                     removeNote(index){
                         this.savedNotes.splice(index, 1)
+                        this.saveNotes()
                         console.log(`Removed note with index: ${index}`)
                     },
                     sortByFilter(){
@@ -154,6 +160,17 @@
                                 })
                                 break      
                         }
+                        this.saveNotes()
+                    },
+                    saveNotes(){
+                        Cookies.set(this.savedNotesPath, this.savedNotes)
+                    }
+                },
+                created(){
+                    // Load saved notes from cookies.
+                    const savedNotesCookiesVersion = Cookies.getJSON(`savedNotes`)
+                    if(savedNotesCookiesVersion !== null && typeof savedNotesCookiesVersion !== `undefined`){
+                        this.savedNotes = savedNotesCookiesVersion
                     }
                 }
             })
