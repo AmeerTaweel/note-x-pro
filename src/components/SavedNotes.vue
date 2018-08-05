@@ -55,7 +55,7 @@ export default {
         border-top: 1px solid grey; 
         border-right: 1px solid grey; 
         border-bottom: 1px solid grey; 
-        border-radius: 0px 5px 5px 0px;
+        border-radius: 5px;
         padding: 10px; 
     }
 
