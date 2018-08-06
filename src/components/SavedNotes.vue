@@ -18,6 +18,7 @@
                         <h3 class="text-primary">{{note.title}}</h3>
                         <h6 class="text-muted">{{note.time}}</h6>
                         <p>{{note.text}}</p>
+                        <h6 class="text-muted">{{note.priority.name}}</h6>
                      </div>
                 </div>
             </div>

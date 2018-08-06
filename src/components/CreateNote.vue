@@ -60,19 +60,22 @@ export default {
                 case 3:
                     computedPriority = {
                         num: priorityInput,
-                        class: `note-priority-high`
+                        class: `note-priority-high`,
+                        name: `#high_priority`
                     }
                     break;
                 case 2:
                     computedPriority = {
                         num: priorityInput,
-                        class: `note-priority-medium`
+                        class: `note-priority-medium`,
+                        name: `#mediummedium_priority`
                     }
                     break;
                 default:
                     computedPriority = {
                         num: priorityInput,
-                        class: `note-priority-low`
+                        class: `note-priority-low`,
+                        name: `#low_priority`
                     }
             }
             // Add the note to savedNotes.
