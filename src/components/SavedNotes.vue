@@ -1,8 +1,16 @@
 <template>
     <div id="saved-notes">
-        <h2 class="m-20"><span class="text-primary">S</span>aved <span class="text-primary">N</span>otes:</h2>
-        <h2 v-if="isEmpty" class="m-20"><small>You don't have any saved notes yet, <span class="text-primary">click on the button below</span> to add your first note.</small></h2>
         <div class="container-fluid">
+            <h2 class="m-20"><span class="text-primary">F</span>ilter <span class="text-primary">N</span>otes:</h2>
+            <div class="row">
+                <div class="form-group">
+                    <div v-for="(filterType, index) in filterTypes" :key="index" class="card col-xs-12 col-sm-6 col-md-3 center-children">
+                        <button class="btn btn-primary" @click="filterNotes(filterType.value)">{{filterType.text}}</button>
+                    </div>
+                </div>
+            </div>    
+            <h2 class="m-20"><span class="text-primary">S</span>aved <span class="text-primary">N</span>otes:</h2>
+            <h2 v-if="isEmpty" class="m-20"><small>You don't have any saved notes yet, <span class="text-primary">click on the button below</span> to add your first note.</small></h2>
             <div class="row">
                 <div class="card col-xs-12 col-sm-6 col-md-4" v-for="(note, index) in savedNotes" :key="index">
                     <div v-bind:class="note.priority.class" class="card-content">
@@ -25,7 +33,25 @@ export default {
         return {
             savedNotes: [],
             savedNotesPath: `savedNotes`,
-            isEmpty: true
+            isEmpty: true,
+            filterTypes: [
+                {
+                    value: 1,
+                    text: `More Important First`
+                },
+                {
+                    value: 2,
+                    text: `Less Important First`
+                },
+                {
+                    value: 3,
+                    text: `Newer First`
+                },
+                {
+                    value: 4,
+                    text: `Older First`
+                }
+            ]
         }
     },
     methods: {
@@ -34,6 +60,35 @@ export default {
             this.saveNotes()
             console.log(`Removed note with index: ${index}`)
             this.checkEmpty()
+        },
+        filterNotes(filter){
+            switch(filter){
+                // More important first.
+                case 1:
+                    this.savedNotes.sort((a, b) => {
+                        return b.priority.num - a.priority.num
+                    })
+                    break
+                // Less important first.    
+                case 2:
+                    this.savedNotes.sort((a, b) => {
+                        return a.priority.num - b.priority.num
+                    })
+                    break
+                // Newer first.    
+                case 3:
+                    this.savedNotes.sort((a, b) => {
+                        return b.mls - a.mls
+                    })
+                    break
+                // Older first.      
+                case 4:
+                    this.savedNotes.sort((a, b) => {
+                        return a.mls - b.mls
+                    })
+                    break      
+            }
+            this.saveNotes()
         },
         saveNotes(){
             Cookies.set(this.savedNotesPath, this.savedNotes)
@@ -58,6 +113,12 @@ export default {
 </script>
 
 <style>
+    .center-children {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     .card {
         padding: 10px;
     }
