@@ -22,6 +22,7 @@
                 </form>
             </div>    
         </div>
+        <notifications group="create-note" />
     </div>
 </template>
 
@@ -37,7 +38,9 @@ export default {
                 priority: 1
             },
             savedNotes: [],
-            savedNotesPath: `savedNotes`
+            savedNotesPath: `savedNotes`,
+            alertMessage: `<strong>Note Saved!</strong>`,
+            alertType: `success`
         }
     },
     methods: {
@@ -45,6 +48,12 @@ export default {
             // Get the user input.
             const titleInput = this.note.title
             const textInput = this.note.text
+            if(titleInput === `` || textInput === ``){
+                this.alertMessage = `<strong>Error: You must provide a title &#38; a body.</strong>`
+                this.alertType = `error`
+                this.showAlert()
+                return
+            }
             const priorityInput = Number(this.note.priority)
             let computedPriority
             switch(priorityInput) {
@@ -76,6 +85,9 @@ export default {
             })
             this.saveNotes()
             console.log(`New note created.`)
+            this.alertMessage = `<strong>Note Saved!</strong>`
+            this.alertType = `success`
+            this.showAlert()
             this.note = {
                 title: ``,
                 text: ``,
@@ -84,6 +96,13 @@ export default {
         },
         saveNotes(){
             Cookies.set(this.savedNotesPath, this.savedNotes)
+        },
+        showAlert(){
+            this.$notify({
+                group: "create-note",
+                text: this.alertMessage,
+                type: this.alertType
+            })
         }
     },
     created(){
