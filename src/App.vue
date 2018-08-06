@@ -5,10 +5,10 @@
     <saved-notes v-if="isDisplayed('saved-notes')"></saved-notes>
     <create-note v-if="isDisplayed('create-note')"></create-note>
     <button v-if="isDisplayed('saved-notes')" type="button" class="action-btn btn btn-primary" aria-label="Create Note" @click="display('create-note')">
-      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create new note
     </button>
     <button v-if="isDisplayed('create-note')" type="button" class="action-btn btn btn-primary" aria-label="Create Note" @click="display('saved-notes')">
-      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+      <span class="glyphicon glyphicon-list" aria-hidden="true"></span> Back to saved notes
     </button>
   </div>
 </template>
@@ -43,9 +43,7 @@ export default {
     position: fixed;
     right: 0;
     bottom: 0;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    border-radius: 5px;
     margin: 25px;
     -moz-box-shadow:2px 4px 10px grey;
     -webkit-box-shadow:2px 4px 10px grey;

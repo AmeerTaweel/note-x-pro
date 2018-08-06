@@ -21,7 +21,7 @@
                     <button type="button" class="btn btn-primary" @click="addNote">Save Note</button>
                 </form>
             </div>    
-        </div>    
+        </div>
     </div>
 </template>
 
