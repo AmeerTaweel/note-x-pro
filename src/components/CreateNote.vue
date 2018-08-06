@@ -68,7 +68,7 @@ export default {
                     computedPriority = {
                         num: priorityInput,
                         class: `note-priority-medium`,
-                        name: `#mediummedium_priority`
+                        name: `#medium_priority`
                     }
                     break;
                 default:
