@@ -12,13 +12,13 @@
             <h2 class="m-20"><span class="text-primary">S</span>aved <span class="text-primary">N</span>otes:</h2>
             <h2 v-if="isEmpty" class="m-20"><small>You don't have any saved notes yet, <span class="text-primary">click on the button below</span> to add your first note.</small></h2>
             <div class="row">
-                <div class="card col-xs-12 col-sm-6 col-md-4" v-for="(note, index) in savedNotes" :key="index">
+                <div class="card col-xs-12 col-sm-6 col-md-4 col-lg-3" v-for="(note, index) in savedNotes" :key="index">
                     <div v-bind:class="note.priority.class" class="card-content">
                         <button class="close" @click="removeNote(index)">&times;</button>
                         <h3 class="text-primary">{{note.title}}</h3>
                         <h6 class="text-muted">{{note.time}}</h6>
                         <p>{{note.text}}</p>
-                        <h6 class="text-muted">{{note.priority.name}}</h6>
+                        <h6 class="text-muted"><span v-for="(tag, index) in note.tags" :key="index">#{{tag}} </span></h6>
                      </div>
                 </div>
             </div>
@@ -129,7 +129,7 @@ export default {
         border-right: 1px solid grey; 
         border-bottom: 1px solid grey; 
         border-radius: 5px;
-        padding: 10px; 
+        padding: 10px;
     }
 
     .note-priority-low{

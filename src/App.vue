@@ -7,7 +7,7 @@
     <button v-if="isDisplayed('saved-notes')" type="button" class="action-btn btn btn-primary" aria-label="Create Note" @click="display('create-note')">
       <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create new note
     </button>
-    <button v-if="isDisplayed('create-note')" type="button" class="action-btn btn btn-primary" aria-label="Create Note" @click="display('saved-notes')">
+    <button v-if="isDisplayed('create-note')" type="button" class="action-btn btn btn-primary" aria-label="Back" @click="display('saved-notes')">
       <span class="glyphicon glyphicon-list" aria-hidden="true"></span> Back to saved notes
     </button>
   </div>
