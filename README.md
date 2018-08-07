@@ -10,6 +10,7 @@ NoteXPro is a simple, responsive notepad made with Vue.js and Bootstrap.
 * Notes can be sorted by **priority** and **time**.
 * Notes get stored in the browser cookies.
 * Includes an alert system.
+* Tags can be added to notes to make searching easier.
 
 ## License
 
