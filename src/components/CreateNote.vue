@@ -157,8 +157,8 @@ export default {
                     this.alertType = `error`
                     this.showAlert()
                 }else{
-                    // Extract the tag from the input and add it to the list of tags.
-                    this.note.tags.push(this.tagsInput.substring(0, this.tagsInput.length - 1))
+                    // Add the tag to the list of tags.
+                    this.note.tags.push(this.tagsInput)
                 }
                 // Clean the input feild.
                 this.tagsInput = ``
