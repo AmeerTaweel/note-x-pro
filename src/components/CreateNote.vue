@@ -23,7 +23,7 @@
                         <p class="text-muted">Seperate tags with spaces. Tags can only contain lowercase letters, numbers, underscores and dots.</p>
                         <div class="tags-holder">
                             <button type="button" v-for="(tag, index) in getTags" :key="index" class="tag btn btn-primary" @click="removeTag(index)">
-                                {{tag}} <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                {{tag}} <i class="material-icons align-middle">close</i>
                             </button>
                             <input type="text" class="tags-input" v-model="tagsInput">
                         </div>
