@@ -1,15 +1,13 @@
 <template>
-    <div id="saved-notes">
+    <div id="saved-notes" class="m-20">
         <div class="container-fluid">
-            <h2 class="m-20"><span class="text-primary">F</span>ilter <span class="text-primary">N</span>otes:</h2>
+            <h2><span class="text-primary">F</span>ilter <span class="text-primary">N</span>otes:</h2>
             <div class="row">
-                <div class="form-group">
-                    <div v-for="(filterType, index) in filterTypes" :key="index" class="card col-xs-12 col-sm-6 col-md-3 center-children">
-                        <button class="btn btn-primary" @click="filterNotes(filterType.value)">{{filterType.text}}</button>
-                    </div>
+                <div v-for="(filterType, index) in filterTypes" :key="index" class="card col-xs-12 col-sm-6 col-md-3 center-children">
+                    <button class="btn btn-primary" @click="filterNotes(filterType.value)">{{filterType.text}}</button>
                 </div>
             </div>    
-            <h2 class="m-20"><span class="text-primary">S</span>aved <span class="text-primary">N</span>otes:</h2>
+            <h2><span class="text-primary">S</span>aved <span class="text-primary">N</span>otes:</h2>
             <h2 v-if="isEmpty" class="m-20"><small>You don't have any saved notes yet, <span class="text-primary">click on the button below</span> to add your first note.</small></h2>
             <div class="row">
                 <div class="card col-xs-12 col-sm-6 col-md-4 col-lg-3" v-for="(note, index) in savedNotes" :key="index">

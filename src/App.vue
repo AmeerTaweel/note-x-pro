@@ -1,14 +1,14 @@
 <template>
-  <div id="app">
+  <div id="app" class="m-20">
     <h1 class="text-center">Note<span class="text-primary">X</span>Pro</h1>
     <h1 class="text-center"><small>Fast, Clean, Responsive &#38; Professional Notepad!</small></h1>
     <saved-notes v-if="isDisplayed('saved-notes')"></saved-notes>
     <create-note v-if="isDisplayed('create-note')"></create-note>
     <button v-if="isDisplayed('saved-notes')" type="button" class="action-btn btn btn-primary" aria-label="Create Note" @click="display('create-note')">
-      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create new note
+      <i class="material-icons align-middle">add</i>Create new note
     </button>
     <button v-if="isDisplayed('create-note')" type="button" class="action-btn btn btn-primary" aria-label="Back" @click="display('saved-notes')">
-      <span class="glyphicon glyphicon-list" aria-hidden="true"></span> Back to saved notes
+      <i class="material-icons align-middle">list</i> Back to saved notes
     </button>
   </div>
 </template>

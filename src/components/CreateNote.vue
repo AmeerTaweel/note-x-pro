@@ -1,6 +1,6 @@
 <template>
-    <div id="create-note">
-        <h2 class="m-20"><span class="text-primary">C</span>reate <span class="text-primary">N</span>ew <span class="text-primary">N</span>ote:</h2>
+    <div id="create-note" class="m-20">
+        <h2><span class="text-primary">C</span>reate <span class="text-primary">N</span>ew <span class="text-primary">N</span>ote:</h2>
         <div class="container-fluid">
             <div class="row">
                 <form class="col-xs-12">
@@ -28,7 +28,9 @@
                             <input type="text" class="tags-input" v-model="tagsInput">
                         </div>
                     </div>
-                    <button type="button" class="btn btn-primary" @click="addNote">Save Note</button>
+                    <button type="button" class="btn btn-primary" @click="addNote">
+                        <i class="material-icons align-middle">save</i>Save Note
+                    </button>
                 </form>
             </div>    
         </div>
