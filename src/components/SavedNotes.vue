@@ -130,6 +130,7 @@ export default {
         border-bottom: 1px solid grey; 
         border-radius: 5px;
         padding: 10px;
+        word-wrap: break-word;
     }
 
     .note-priority-low{
