@@ -112,36 +112,30 @@ export default {
 </script>
 
 <style>
-    .center-children {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+.card {
+    padding: 10px;
+    border-width: 0px;
+}
 
-    .card {
-        padding: 10px;
-        border-width: 0px;
-    }
+.card-content {
+    border-top: 1px solid grey; 
+    border-right: 1px solid grey; 
+    border-bottom: 1px solid grey; 
+    border-radius: 5px;
+    padding: 10px;
+    word-wrap: break-word;
+    height: 100%;
+}
 
-    .card-content {
-        border-top: 1px solid grey; 
-        border-right: 1px solid grey; 
-        border-bottom: 1px solid grey; 
-        border-radius: 5px;
-        padding: 10px;
-        word-wrap: break-word;
-        height: 100%;
-    }
+.note-priority-low {
+    border-left: 10px solid #4cae4c; 
+}
 
-    .note-priority-low{
-        border-left: 10px solid #4cae4c; 
-    }
+.note-priority-medium {
+    border-left: 10px solid #eea236; 
+}
 
-    .note-priority-medium{
-        border-left: 10px solid #eea236; 
-    }
-
-    .note-priority-high{
-        border-left: 10px solid #d9534f; 
-    }
+.note-priority-high {
+    border-left: 10px solid #d9534f; 
+}
 </style>
