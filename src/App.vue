@@ -43,11 +43,7 @@ export default {
     position: fixed;
     right: 0;
     bottom: 0;
-    border-radius: 5px;
     margin: 25px;
-    -moz-box-shadow:2px 4px 10px grey;
-    -webkit-box-shadow:2px 4px 10px grey;
-    box-shadow:2px 4px 10px grey;
   }
   .m-20{
     margin: 20px;

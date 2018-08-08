@@ -122,6 +122,7 @@ export default {
 
     .card {
         padding: 10px;
+        border-width: 0px;
     }
 
     .card-content {
@@ -131,6 +132,7 @@ export default {
         border-radius: 5px;
         padding: 10px;
         word-wrap: break-word;
+        height: 100%;
     }
 
     .note-priority-low{
