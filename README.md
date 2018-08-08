@@ -8,6 +8,7 @@ You can visit [NoteXPro Website](https://www.google.com "NoteXPro Website").
 
 ## Features:
 
+* Modern design.
 * Simple, clean and easy to use.
 * Responsive (Works on various screen sizes).
 * Notes priority can be specified.
@@ -15,6 +16,11 @@ You can visit [NoteXPro Website](https://www.google.com "NoteXPro Website").
 * Notes get stored in the browser cookies.
 * Includes an alert system.
 * Tags can be added to notes to make searching easier.
+
+## Upcoming:
+
+* Ability to edit notes after they are saved.
+* Design imprivements.
 
 ## License
 
