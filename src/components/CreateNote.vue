@@ -20,6 +20,7 @@
                     </div>
                     <div class="form-group">
                         <label>Tags (Add Up To 3):</label><br/>
+                        <p class="text-muted">Seperate tags with spaces. Tags can only contain lowercase letters, numbers, underscores and dots.</p>
                         <div class="tags-holder">
                             <button type="button" v-for="(tag, index) in getTags" :key="index" class="tag btn btn-primary" @click="removeTag(index)">
                                 {{tag}} <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
@@ -133,20 +134,29 @@ export default {
     },
     computed: {
         getTags(){
+            // Regular expression to valiadate tags.
+            const validTag = /^[a-z._0-9]+$/
             // Check if a space added to the end of the tagsInput.
             if(this.tagsInput[this.tagsInput.length - 1] === ` ` && this.tagsInput.length > 1){
+                // Remove the space at the end.
+                this.tagsInput = this.tagsInput.substring(0, this.tagsInput.length - 1)
                 // Remove the space in the start of the tag if found.
                 if(this.tagsInput[0] === ' '){
                     this.tagsInput = this.tagsInput.substring(1, this.tagsInput.length)
                 }
                 // Only add the tag if there is less than 3 tags.
-                if(this.note.tags.length < 3){
-                    // Extract the tag from the input and add it to the list of tags.
-                    this.note.tags.push(this.tagsInput.substring(0, this.tagsInput.length - 1))
-                }else{
+                if(this.note.tags.length >= 3){
                     this.alertMessage = `<strong>You can't add more than 3 tags.</strong>`
                     this.alertType = `error`
                     this.showAlert()
+                }else if(!validTag.test(this.tagsInput)){
+                    console.log(this.tagsInput)
+                    this.alertMessage = `<strong>Tags can only contain lowercase letters, numbers, underscores and dots.</strong>`
+                    this.alertType = `error`
+                    this.showAlert()
+                }else{
+                    // Extract the tag from the input and add it to the list of tags.
+                    this.note.tags.push(this.tagsInput.substring(0, this.tagsInput.length - 1))
                 }
                 // Clean the input feild.
                 this.tagsInput = ``
