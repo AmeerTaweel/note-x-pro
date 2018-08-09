@@ -20,7 +20,7 @@ You can visit [NoteXPro Website](https://www.google.com "NoteXPro Website").
 
 ## Upcoming Features
 
-* Ability to search notes by tags.
+* Notes editor.
 * Design improvements.
 
 ## License
