@@ -131,8 +131,8 @@ export default {
             // Search inside notes titles, bodies, tags.
             for(let i = 0; i < this.savedNotes.length; i++){
                 const note = this.savedNotes[i]
-                if(note.title.includes(this.searchFor) 
-                    || note.text.includes(this.searchFor)){
+                if(note.title.toLowerCase().includes(this.searchFor) 
+                    || note.text.toLowerCase().includes(this.searchFor)){
                     searchResults.push(note)
                     continue
                 }
