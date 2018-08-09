@@ -2,6 +2,18 @@
     <div id="saved-notes" class="m-20">
         <div class="container-fluid">
             <h2><span class="text-primary">F</span>ilter <span class="text-primary">N</span>otes:</h2>
+            <form>
+                <div class="form-group">
+                    <label>Search Notes:</label>
+                    <div class="input-group">
+                        <input type="search" class="form-control" v-model="searchFor">
+                        <div class="input-group-append">
+                            <i class="input-group-text material-icons">search</i>
+                        </div>
+                    </div>
+                    <small class="form-text text-muted">You can search notes by title, body and tags.</small>
+                </div>
+            </form>
             <div class="row">
                 <div v-for="(filterType, index) in filterTypes" :key="index" class="card col-xs-12 col-md-6 col-lg-3">
                     <button class="btn btn-primary" @click="filterNotes(filterType.value)">{{filterType.text}}</button>
@@ -10,7 +22,7 @@
             <h2><span class="text-primary">S</span>aved <span class="text-primary">N</span>otes:</h2>
             <h2 v-if="isEmpty" class="m-20"><small>You don't have any saved notes yet, <span class="text-primary">click on the button below</span> to add your first note.</small></h2>
             <div class="row">
-                <div class="card col-xs-12 col-md-6 col-lg-4" v-for="(note, index) in savedNotes" :key="index">
+                <div class="card col-xs-12 col-md-6 col-lg-4" v-for="(note, index) in getNotes" :key="index">
                     <div v-bind:class="note.priority.class" class="card-content">
                         <button class="close" @click="removeNote(index)">&times;</button>
                         <h3 class="text-primary">{{note.title}}</h3>
@@ -50,7 +62,8 @@ export default {
                     value: 4,
                     text: `Older First`
                 }
-            ]
+            ],
+            searchFor: ``
         }
     },
     methods: {
@@ -107,6 +120,32 @@ export default {
             this.savedNotes = savedNotesCookiesVersion
         }
         this.checkEmpty()
+    },
+    computed: {
+        getNotes(){
+            // Return all the notes if the user didn't search for something.
+            if(this.searchFor === `` || this.searchFor === null){
+                return this.savedNotes
+            }
+            let searchResults = []
+            // Search inside notes titles, bodies, tags.
+            for(let i = 0; i < this.savedNotes.length; i++){
+                const note = this.savedNotes[i]
+                if(note.title.includes(this.searchFor) 
+                    || note.text.includes(this.searchFor)){
+                    searchResults.push(note)
+                    continue
+                }
+                for(let j = 0; j < note.tags.length; j++){
+                    const tag = note.tags[j]
+                    if(tag.includes(this.searchFor)){
+                        searchResults.push(note)
+                        break
+                    }
+                }
+            }
+            return searchResults
+        }
     }
 }
 </script>
