@@ -2,11 +2,11 @@
 
 NoteXPro is a simple, responsive notepad made with Vue.js and Bootstrap.
 
-## Usage:
+## Usage
 
 You can visit [NoteXPro Website](https://www.google.com "NoteXPro Website").
 
-## Features:
+## Features
 
 * Modern design.
 * Simple, clean and easy to use.
@@ -16,10 +16,10 @@ You can visit [NoteXPro Website](https://www.google.com "NoteXPro Website").
 * Notes get stored in the browser cookies.
 * Includes an alert system.
 * Tags can be added to notes to make searching easier.
+* Ability to search notes by title, body and tags.
 
-## Upcoming Features:
+## Upcoming Features
 
-* Ability to edit notes after they are saved.
 * Ability to search notes by tags.
 * Design improvements.
 
