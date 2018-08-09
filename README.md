@@ -17,7 +17,7 @@ You can visit [NoteXPro Website](https://www.google.com "NoteXPro Website").
 * Includes an alert system.
 * Tags can be added to notes to make searching easier.
 
-## Upcoming:
+## Upcoming Features:
 
 * Ability to edit notes after they are saved.
 * Ability to search notes by tags.
