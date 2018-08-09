@@ -20,6 +20,7 @@ You can visit [NoteXPro Website](https://www.google.com "NoteXPro Website").
 ## Upcoming:
 
 * Ability to edit notes after they are saved.
+* Ability to search notes by tags.
 * Design imprivements.
 
 ## License
