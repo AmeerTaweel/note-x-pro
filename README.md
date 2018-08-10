@@ -16,7 +16,7 @@ You can visit [NoteXPro Website](https://www.google.com "NoteXPro Website").
 * Notes get stored in the browser cookies.
 * Includes an alert system.
 * Tags can be added to notes to make searching easier.
-* Ability to search notes by title, body and tags.
+* Ability to search notes **easily** and **effeciently**.
 
 ## Upcoming Features
 
