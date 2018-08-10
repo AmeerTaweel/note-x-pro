@@ -123,25 +123,43 @@ export default {
     },
     computed: {
         getNotes(){
+            let query = this.searchFor
             // Return all the notes if the user didn't search for something.
-            if(this.searchFor === `` || this.searchFor === null){
+            if(query === `` || query === null){
                 return this.savedNotes
             }
+            // Remove the space at the beggining if exists.
+            if(query[0] === ` `){
+                query = query.substring(1, query.length)
+            }
+            // Remove the space at the end if exists.
+            if(query[query.length - 1] === ` `){
+                query = query.substring(0, query.length - 1)
+            }
+            // Get all the words from the search query.
+            const keywords = query.split(` `)
             let searchResults = []
             // Search inside notes titles, bodies, tags.
             for(let i = 0; i < this.savedNotes.length; i++){
                 const note = this.savedNotes[i]
-                if(note.title.toLowerCase().includes(this.searchFor) 
-                    || note.text.toLowerCase().includes(this.searchFor)){
-                    searchResults.push(note)
-                    continue
-                }
-                for(let j = 0; j < note.tags.length; j++){
-                    const tag = note.tags[j]
-                    if(tag.includes(this.searchFor)){
-                        searchResults.push(note)
-                        break
+                let noteScore = 0
+                for(let k = 0; k < keywords.length; k++){
+                    const keyword = keywords[k]
+                    if(note.title.toLowerCase().includes(keyword) 
+                        || note.text.toLowerCase().includes(keyword)){
+                        noteScore++ 
+                        continue   
                     }
+                    for(let j = 0; j < note.tags.length; j++){
+                        const tag = note.tags[j]
+                        if(tag.includes(keyword)){
+                            noteScore++
+                            break
+                        }
+                    }
+                }
+                if(noteScore >= keywords.length * 70/100){
+                    searchResults.push(note)
                 }
             }
             return searchResults
