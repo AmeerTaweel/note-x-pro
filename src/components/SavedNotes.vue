@@ -143,8 +143,10 @@ export default {
             for(let i = 0; i < this.savedNotes.length; i++){
                 const note = this.savedNotes[i]
                 let noteScore = 0
+                // Search for all keywords in every note.
                 for(let k = 0; k < keywords.length; k++){
                     const keyword = keywords[k]
+                    // Increase the note score with every keyword occurence.
                     if(note.title.toLowerCase().includes(keyword) 
                         || note.text.toLowerCase().includes(keyword)){
                         noteScore++ 
@@ -158,6 +160,8 @@ export default {
                         }
                     }
                 }
+                // Only show notes that have score more than 70%.
+                // This way search will be flixeble but shows more relevant results.
                 if(noteScore >= keywords.length * 70/100){
                     searchResults.push(note)
                 }
