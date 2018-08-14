@@ -145,7 +145,7 @@ export default {
                 let noteScore = 0
                 // Search for all keywords in every note.
                 for(let k = 0; k < keywords.length; k++){
-                    const keyword = keywords[k]
+                    const keyword = keywords[k].toLowerCase()
                     // Increase the note score with every keyword occurence.
                     if(note.title.toLowerCase().includes(keyword) 
                         || note.text.toLowerCase().includes(keyword)){
