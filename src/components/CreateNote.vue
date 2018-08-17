@@ -25,7 +25,7 @@
                             <button type="button" v-for="(tag, index) in getTags" :key="index" class="tag btn btn-primary" @click="removeTag(index)">
                                 {{tag}} <i class="material-icons align-middle">close</i>
                             </button>
-                            <input type="text" class="tags-input" v-model="tagsInput">
+                            <input type="text" class="tags-input" v-model="tagsInput" v-on:keyup.delete="removeTag(note.tags.length - 1)">
                         </div>
                     </div>
                     <button type="button" class="btn btn-primary" @click="addNote">
