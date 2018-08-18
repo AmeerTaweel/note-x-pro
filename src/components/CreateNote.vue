@@ -25,7 +25,7 @@
                             <button type="button" v-for="(tag, index) in getTags" :key="index" class="tag btn btn-primary" @click="removeTag(index)">
                                 {{tag}} <i class="material-icons align-middle">close</i>
                             </button>
-                            <input type="text" class="tags-input" v-model="tagsInput" v-on:keyup.delete="removeTag(note.tags.length - 1)">
+                            <input type="text" class="tags-input" v-model="tagsInput" v-on:keyup.delete="removeLastTag">
                         </div>
                     </div>
                     <button type="button" class="btn btn-primary" @click="addNote">
@@ -55,6 +55,7 @@ export default {
             alertMessage: `<strong>Note Saved!</strong>`,
             alertType: `success`,
             tagsInput: ``,
+            isLastTagRemovable: false
         }
     },
     methods: {
@@ -125,6 +126,16 @@ export default {
                 text: this.alertMessage,
                 type: this.alertType
             })
+        },
+        removeLastTag(){
+            if(this.tagsInput === `` || this.tagsInput === null || typeof this.tagsInput === `undefined`){
+                if(this.isLastTagRemovable){
+                    this.removeTag(this.note.tags.length - 1)
+                    this.isLastTagRemovable = false
+                }else{
+                    this.isLastTagRemovable = true
+                }
+            }
         }
     },
     created(){
