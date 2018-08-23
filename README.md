@@ -4,7 +4,7 @@ NoteXPro is a simple, responsive notepad made with Vue.js and Bootstrap.
 
 ## Usage
 
-You can visit [NoteXPro Website](https://www.google.com "NoteXPro Website").
+You can visit [NoteXPro Website](https://notexpro-ameer-taweel.firebaseapp.com/ "NoteXPro Website").
 
 ## Features
 
