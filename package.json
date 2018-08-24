@@ -12,7 +12,8 @@
   "dependencies": {
     "js-cookie": "^2.2.0",
     "vue": "^2.5.11",
-    "vue-notification": "^1.3.12"
+    "vue-notification": "^1.3.12",
+    "vuex": "^3.0.1"
   },
   "browserslist": [
     "> 1%",
