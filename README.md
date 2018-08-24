@@ -17,6 +17,7 @@ You can visit [NoteXPro Website](https://notexpro-ameer-taweel.firebaseapp.com/ 
 * Includes an alert system.
 * Tags can be added to notes to make searching easier.
 * Ability to search notes **easily** and **effeciently**.
+* Uses Vuex state management library.
 
 ## Upcoming Features
 
