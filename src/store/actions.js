@@ -1,4 +1,5 @@
 import * as types from './mutation-types.js'
+import * as Cookies from "js-cookie"
 
 // Load saved notes from cookies.
 export const loadNotes = ({commit}) => {

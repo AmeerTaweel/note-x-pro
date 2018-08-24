@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import SavedNotes from "./components/SavedNotes"
 import CreateNote from "./components/CreateNote"
 export default {
@@ -24,6 +25,9 @@ export default {
     }
   },
   methods: {
+    ...mapActions([
+      'loadNotes'
+    ]),
     isDisplayed(componentName){
       return this.displayed === componentName
     },
@@ -34,6 +38,9 @@ export default {
   components: {
     SavedNotes,
     CreateNote
+  },
+  created(){
+    this.loadNotes()
   }
 }
 </script>
