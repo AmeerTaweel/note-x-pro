@@ -74,12 +74,10 @@ export default {
             this.removeNote(index)
             this.saveNotes()
             this.checkEmpty()
-            this.relayout()
         },
         sortNotes(filter){
             this.filterNotes(filter)
             this.saveNotes()
-            this.relayout()
         },
         checkEmpty(){
             if(this.$store.state.notes === null || this.$store.state.notes.length === 0){
@@ -89,7 +87,7 @@ export default {
             }
         },
         relayout(){
-            this.$store.state.notes.forEach((note, index) => {
+            this.getNotes.forEach((note, index) => {
                 let noteBody = document.getElementById(`note-body-${index}`)
                 let noteTitle = document.getElementById(`note-title-${index}`)
                 const layout = () => {
@@ -121,6 +119,9 @@ export default {
                 }
             }
         }
+    },
+    watch: {
+        'getNotes': `relayout`
     },
     created(){
         this.checkEmpty()
