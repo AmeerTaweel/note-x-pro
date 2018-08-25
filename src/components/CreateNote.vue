@@ -28,7 +28,7 @@
                             <input type="text" class="tags-input" v-model="tagsInput" v-on:keyup.delete="removeLastTag">
                         </div>
                     </div>
-                    <button type="button" class="btn btn-primary" @click="addNote">
+                    <button type="button" class="btn btn-primary" @click="createNote">
                         <i class="material-icons align-middle">save</i>Save Note
                     </button>
                 </form>
@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import * as Cookies from "js-cookie"
+import { mapActions } from 'vuex'
 export default {
     name: "create-note",
     data() {
@@ -50,8 +50,6 @@ export default {
                 priority: 1,
                 tags: []
             },
-            savedNotes: [],
-            savedNotesPath: `savedNotes`,
             alertMessage: `<strong>Note Saved!</strong>`,
             alertType: `success`,
             tagsInput: ``,
@@ -59,7 +57,11 @@ export default {
         }
     },
     methods: {
-        addNote(){
+        ...mapActions([
+            'addNote',
+            'saveNotes'
+        ]),
+        createNote(){
             // Get the user input.
             const titleInput = this.note.title
             const textInput = this.note.text
@@ -94,16 +96,16 @@ export default {
                     this.note.tags.splice(0, 0, 'low_priority')
             }
             // Add the note to savedNotes.
-            this.savedNotes.push({
+            const new_note = {
                 title: titleInput,
                 text: textInput,
                 time: new Date(Date.now()).toLocaleString(),
                 priority: computedPriority,
                 mls: Math.round((new Date()).getTime() / 1000),
                 tags: this.note.tags
-            })
+            }
+            this.addNote(new_note)
             this.saveNotes()
-            console.log(`New note created.`)
             this.alertMessage = `<strong>Note Saved!</strong>`
             this.alertType = `success`
             this.showAlert()
@@ -116,9 +118,6 @@ export default {
         },
         removeTag(index){
             this.note.tags.splice(index, 1)
-        },
-        saveNotes(){
-            Cookies.set(this.savedNotesPath, this.savedNotes)
         },
         showAlert(){
             this.$notify({
@@ -136,13 +135,6 @@ export default {
                     this.isLastTagRemovable = true
                 }
             }
-        }
-    },
-    created(){
-        // Load saved notes from cookies.
-        const savedNotesCookiesVersion = Cookies.getJSON(`savedNotes`)
-        if(savedNotesCookiesVersion !== null && typeof savedNotesCookiesVersion !== `undefined`){
-            this.savedNotes = savedNotesCookiesVersion
         }
     },
     computed: {

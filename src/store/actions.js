@@ -9,6 +9,13 @@ export const loadNotes = ({commit}) => {
     }
 }
 
+// Add one note to the notes array.
+export const addNote = ({commit}, note) => {
+    if(note !== null && typeof note !== `undefined`){
+        commit(types.SET_NOTES, [note])
+    }
+}
+
 // Remove a note from the notes array.
 export const removeNote = ({commit}, index) => {
     commit(types.REMOVE_NOTE, index)
