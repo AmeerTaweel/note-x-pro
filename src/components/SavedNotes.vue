@@ -109,8 +109,13 @@ export default {
                     elementHeight = element.offsetHeight
                 }
                 if(lines >= (maxLines + 1)){
-                    element.innerHTML = element.innerHTML.substr(0, element.innerHTML.length - 2) + `...`
+                    element.innerHTML = element.innerHTML.substr(0, element.innerHTML.length - 4) + `...`
                     break
+                }
+            }
+            if(lines < maxLines){
+                for(let i = 0; i < maxLines + 1 - lines; i++){
+                    element.innerHTML += '<br/>'
                 }
             }
         }
