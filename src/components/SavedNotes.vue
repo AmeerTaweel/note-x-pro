@@ -27,7 +27,7 @@
                         <button class="close" @click="deleteNote(index)">&times;</button>
                         <h3 class="text-primary">{{note.title}}</h3>
                         <h6 class="text-muted">{{note.time}}</h6>
-                        <p>{{note.text}}</p>
+                        <p :id="`note-body-${index}`">{{note.text}}</p>
                         <h6 class="text-muted"><span v-for="(tag, index) in note.tags" :key="index">#{{tag}} </span></h6>
                      </div>
                 </div>
@@ -85,10 +85,36 @@ export default {
             }else{
                 this.isEmpty = false
             }
+        },
+        relayout(){
+            this.$store.state.notes.forEach((note, index) => {
+                let noteBody = document.getElementById(`note-body-${index}`)
+                const layout = () => {
+                    noteBody.innerHTML = note.text[0]
+                    let bodyHeight = noteBody.offsetHeight
+                    let lines = 1
+                    for(let i = 1; i < note.text.length; i++){
+                        noteBody.innerHTML += note.text[i]
+                        if(noteBody.offsetHeight > bodyHeight){
+                            lines++
+                            bodyHeight = noteBody.offsetHeight
+                        }
+                        if(lines >= 4){
+                            noteBody.innerHTML = noteBody.innerHTML.substr(0, noteBody.innerHTML.length - 2) + `...`
+                            break
+                        }
+                    }
+                }
+                layout()
+                window.addEventListener(`resize`, layout)
+            })
         }
     },
     created(){
         this.checkEmpty()
+    },
+    mounted(){
+        this.relayout()
     },
     computed: {
         getNotes(){
