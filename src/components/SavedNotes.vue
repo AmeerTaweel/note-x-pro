@@ -74,10 +74,12 @@ export default {
             this.removeNote(index)
             this.saveNotes()
             this.checkEmpty()
+            this.relayout()
         },
         sortNotes(filter){
             this.filterNotes(filter)
             this.saveNotes()
+            this.relayout()
         },
         checkEmpty(){
             if(this.$store.state.notes === null || this.$store.state.notes.length === 0){
