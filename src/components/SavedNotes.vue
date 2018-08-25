@@ -25,7 +25,7 @@
                 <div class="card col-xs-12 col-md-6 col-lg-4" v-for="(note, index) in getNotes" :key="index">
                     <div v-bind:class="note.priority.class" class="card-content">
                         <button class="close" @click="deleteNote(index)">&times;</button>
-                        <h3 class="text-primary">{{note.title}}</h3>
+                        <h3 :id="`note-title-${index}`" class="text-primary">{{note.title}}</h3>
                         <h6 class="text-muted">{{note.time}}</h6>
                         <p :id="`note-body-${index}`">{{note.text}}</p>
                         <h6 class="text-muted"><span v-for="(tag, index) in note.tags" :key="index">#{{tag}} </span></h6>
@@ -89,25 +89,30 @@ export default {
         relayout(){
             this.$store.state.notes.forEach((note, index) => {
                 let noteBody = document.getElementById(`note-body-${index}`)
+                let noteTitle = document.getElementById(`note-title-${index}`)
                 const layout = () => {
-                    noteBody.innerHTML = note.text[0]
-                    let bodyHeight = noteBody.offsetHeight
-                    let lines = 1
-                    for(let i = 1; i < note.text.length; i++){
-                        noteBody.innerHTML += note.text[i]
-                        if(noteBody.offsetHeight > bodyHeight){
-                            lines++
-                            bodyHeight = noteBody.offsetHeight
-                        }
-                        if(lines >= 4){
-                            noteBody.innerHTML = noteBody.innerHTML.substr(0, noteBody.innerHTML.length - 2) + `...`
-                            break
-                        }
-                    }
+                    this.clamp(noteTitle, note.title, 1)
+                    this.clamp(noteBody, note.text, 3)
                 }
                 layout()
                 window.addEventListener(`resize`, layout)
             })
+        },
+        clamp(element, text, maxLines){
+            element.innerHTML = text[0]
+            let elementHeight = element.offsetHeight
+            let lines = 1
+            for(let i = 1; i < text.length; i++){
+                element.innerHTML += text[i]
+                if(element.offsetHeight > elementHeight){
+                    lines++
+                    elementHeight = element.offsetHeight
+                }
+                if(lines >= (maxLines + 1)){
+                    element.innerHTML = element.innerHTML.substr(0, element.innerHTML.length - 2) + `...`
+                    break
+                }
+            }
         }
     },
     created(){
