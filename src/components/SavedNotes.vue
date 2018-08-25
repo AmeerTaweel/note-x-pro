@@ -25,7 +25,7 @@
                 <div class="card col-xs-12 col-md-6 col-lg-4" v-for="(note, index) in getNotes" :key="index">
                     <div v-bind:class="note.priority.class" class="card-content">
                         <button class="close" @click="deleteNote(index)">&times;</button>
-                        <h3 :id="`note-title-${index}`" class="text-primary">{{note.title}}</h3>
+                        <h3 :id="`note-title-${index}`" class="text-primary" :title="note.title">{{note.title}}</h3>
                         <h6 class="text-muted">{{note.time}}</h6>
                         <p :id="`note-body-${index}`">{{note.text}}</p>
                         <h6 class="text-muted"><span v-for="(tag, index) in note.tags" :key="index">#{{tag}} </span></h6>
