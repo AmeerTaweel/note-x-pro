@@ -3,12 +3,6 @@
     <h1 class="text-center">Note<span class="text-primary">X</span>Pro</h1>
     <h1 class="text-center"><small>Fast, Clean, Responsive &#38; Professional Notepad!</small></h1>
     <router-view></router-view>
-    <button type="button" class="action-btn btn btn-primary" aria-label="Create Note">
-      <i class="material-icons align-middle">add</i>Create new note
-    </button>
-    <button type="button" class="action-btn btn btn-primary" aria-label="Back">
-      <i class="material-icons align-middle">list</i> Back to saved notes
-    </button>
   </div>
 </template>
 

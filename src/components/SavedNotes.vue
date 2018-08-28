@@ -33,6 +33,9 @@
                 </div>
             </div>
         </div>
+        <button type="button" class="action-btn btn btn-primary" @click="createNote">
+            <i class="material-icons align-middle">add</i>Create new note
+        </button>
     </div>    
 </template>
 
@@ -118,6 +121,9 @@ export default {
                     element.innerHTML += '<br/>'
                 }
             }
+        },
+        createNote(){
+            this.$router.push('/create')
         }
     },
     watch: {

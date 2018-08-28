@@ -35,6 +35,9 @@
             </div>    
         </div>
         <notifications group="create-note" class="m-20"/>
+        <button type="button" class="action-btn btn btn-primary" @click="viewSavedNotes">
+            <i class="material-icons align-middle">list</i> Back to saved notes
+        </button>
     </div>
 </template>
 
@@ -135,6 +138,9 @@ export default {
                     this.isLastTagRemovable = true
                 }
             }
+        },
+        viewSavedNotes(){
+            this.$router.push('./saved')
         }
     },
     computed: {
