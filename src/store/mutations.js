@@ -6,6 +6,10 @@ const SAVED_NOTES_PATH = 'savedNotes'
 export const mutations = {
     // Modify the notes array.
     [types.SET_NOTES] (state, notes){
+        state.notes = notes
+    },
+    // Add to the notes array.
+    [types.ADD_NOTES] (state, notes){
         state.notes.push(...notes)
     },
     // Remove a note from the notes array.

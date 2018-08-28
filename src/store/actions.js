@@ -12,7 +12,7 @@ export const loadNotes = ({commit}) => {
 // Add one note to the notes array.
 export const addNote = ({commit}, note) => {
     if(note !== null && typeof note !== `undefined`){
-        commit(types.SET_NOTES, [note])
+        commit(types.ADD_NOTES, [note])
     }
 }
 
