@@ -22,6 +22,7 @@ You can visit [NoteXPro Website](https://notexpro-ameer-taweel.firebaseapp.com/ 
 ## Upcoming Features
 
 * Notes editor.
+* Full Note Viewer.
 * Design improvements.
 
 ## License
