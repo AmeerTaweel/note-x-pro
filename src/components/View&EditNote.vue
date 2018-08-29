@@ -20,7 +20,15 @@ export default {
     methods:{
         update(){
             this.index = this.$route.params.index
+            if(!Number.isInteger(parseInt(this.index)) 
+            || this.$store.state.notes[this.index] === null
+            || typeof this.$store.state.notes[this.index] === 'undefined'){
+                this.$router.push('/404')
+            }
         }
+    },
+    created(){
+        this.update()
     },
     components: {
         Editor
