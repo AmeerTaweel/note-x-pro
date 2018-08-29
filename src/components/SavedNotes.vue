@@ -29,7 +29,9 @@
                                 <i class="material-icons">more_horiz</i>
                             </button>
                             <div class="dropdown-menu" :aria-labelledby="`note-${index}-options`">
-                                <button class="btn dropdown-item" @click="deleteNote(index)">Delete Note</button>
+                                <button class="btn dropdown-item m-0 p-1" @click="deleteNote(index)">
+                                    <i class="material-icons align-middle mr-3 ml-1">delete</i>Delete Note
+                                </button>
                             </div>
                         </div>
                         <h3 :id="`note-title-${index}`" class="text-primary" :title="note.title">{{note.title}}</h3>
