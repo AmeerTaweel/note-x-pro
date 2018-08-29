@@ -14,7 +14,7 @@ const router = new VueRouter({
   routes: [
     {path: '/saved', component: SavedNotes},
     {path: '/create', component: CreateNote},
-    {path: '/editor', component: Editor}
+    {path: '/editor/:index', component: Editor}
   ]
 })
 

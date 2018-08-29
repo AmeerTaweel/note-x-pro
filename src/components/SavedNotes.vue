@@ -29,6 +29,9 @@
                                 <i class="material-icons">more_horiz</i>
                             </button>
                             <div class="dropdown-menu" :aria-labelledby="`note-${index}-options`">
+                                <button class="btn dropdown-item m-0 p-1" @click="editNote(index)">
+                                    <i class="material-icons align-middle mr-3 ml-1">edit</i>View &amp; Edit
+                                </button>
                                 <button class="btn dropdown-item m-0 p-1" @click="deleteNote(index)">
                                     <i class="material-icons align-middle mr-3 ml-1">delete</i>Delete Note
                                 </button>
@@ -86,6 +89,9 @@ export default {
             this.removeNote(index)
             this.saveNotes()
             this.checkEmpty()
+        },
+        editNote(index){
+            this.$router.push(`/editor/${index}`)
         },
         sortNotes(filter){
             this.filterNotes(filter)
