@@ -1,6 +1,6 @@
 <template>
     <div id="editor">
-        Note Editor
+        <h2><span class="text-primary">N</span>ote <span class="text-primary">E</span>ditor:</h2>
     </div>   
 </template>
 
