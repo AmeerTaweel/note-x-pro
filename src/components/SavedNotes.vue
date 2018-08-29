@@ -91,7 +91,7 @@ export default {
             this.checkEmpty()
         },
         editNote(index){
-            this.$router.push(`/editor/${index}`)
+            this.$router.push(`/edit/${index}`)
         },
         sortNotes(filter){
             this.filterNotes(filter)
