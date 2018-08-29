@@ -18,13 +18,20 @@
                 <div v-for="(filterType, index) in filterTypes" :key="index" class="card col-xs-12 col-md-6 col-lg-3">
                     <button class="btn btn-primary" @click="sortNotes(filterType.value)">{{filterType.text}}</button>
                 </div>
-            </div>    
+            </div>
             <h2><span class="text-primary">S</span>aved <span class="text-primary">N</span>otes:</h2>
             <h2 v-if="isEmpty" class="m-20"><small>You don't have any saved notes yet, <span class="text-primary">click on the button below</span> to add your first note.</small></h2>
             <div class="row">
                 <div class="card col-xs-12 col-md-6 col-lg-4" v-for="(note, index) in getNotes" :key="index">
                     <div v-bind:class="note.priority.class" class="card-content">
-                        <button class="close" @click="deleteNote(index)">&times;</button>
+                        <div class="dropdown">
+                            <button class="close" :id="`note-${index}-options`" data-toggle="dropdown">
+                                <i class="material-icons">more_horiz</i>
+                            </button>
+                            <div class="dropdown-menu" :aria-labelledby="`note-${index}-options`">
+                                <button class="btn dropdown-item" @click="deleteNote(index)">Delete Note</button>
+                            </div>
+                        </div>
                         <h3 :id="`note-title-${index}`" class="text-primary" :title="note.title">{{note.title}}</h3>
                         <h6 class="text-muted">{{note.time}}</h6>
                         <p :id="`note-body-${index}`">{{note.text}}</p>
