@@ -1,7 +1,7 @@
 <template>
     <div id="view-and-edit">
         <h2><span class="text-primary">N</span>ote <span class="text-primary">E</span>ditor:</h2>
-        <editor></editor>
+        <editor :edit="$store.state.notes[index]" saveButtonText="Save Edits" @save-note="saveNote"></editor>
     </div>   
 </template>
 
@@ -25,6 +25,9 @@ export default {
             || typeof this.$store.state.notes[this.index] === 'undefined'){
                 this.$router.push('/404')
             }
+        },
+        saveNote(note){
+            console.log(note)
         }
     },
     created(){
