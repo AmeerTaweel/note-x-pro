@@ -5,7 +5,7 @@
       <h1 class="text-center"><small><span class="text-primary">F</span>ast, <span class="text-primary">C</span>lean, <span class="text-primary">R</span>esponsive &#38; <span class="text-primary">P</span>rofessional <span class="text-primary">N</span>otepad!</small></h1>
       <router-view></router-view>
     </div>
-    <footer class="footer bg-light p-3">
+    <footer class="footer bg-light p-3 border-top border-secondary">
       <span>
         <a href="https://github.com/AmeerTaweel/note-x-pro" target="_blank" class="badge badge-dark my-2">
           <svg class="size24" viewBox="0 0 24 24">
