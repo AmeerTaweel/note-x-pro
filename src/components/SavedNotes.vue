@@ -32,7 +32,7 @@
                                 <button class="btn dropdown-item m-0 p-1" @click="editNote(index)">
                                     <i class="material-icons align-middle mr-3 ml-1">edit</i>View &amp; Edit
                                 </button>
-                                <button class="btn dropdown-item m-0 p-1" @click="deleteNote(index)">
+                                <button class="btn dropdown-item m-0 p-1 text-danger" @click="deleteNote(index)">
                                     <i class="material-icons align-middle mr-3 ml-1">delete</i>Delete Note
                                 </button>
                             </div>
