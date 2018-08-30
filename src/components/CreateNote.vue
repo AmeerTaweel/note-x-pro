@@ -38,7 +38,7 @@ export default {
             this.saveNotes()
         },
         viewSavedNotes(){
-            this.$router.push('./saved')
+            this.$router.push('/saved')
         }
     },
     components: {
@@ -46,20 +46,3 @@ export default {
     }
 }
 </script>
-
-<style>
-.tags-holder {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 2px;
-}
-.tags-input {
-    border-width: 0px;
-    outline-width: 0px;
-}
-
-.tag, .tags-input {
-    padding: 5px;
-    margin: 3px;
-}
-</style>

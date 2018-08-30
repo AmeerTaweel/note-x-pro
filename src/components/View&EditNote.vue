@@ -2,6 +2,9 @@
     <div id="view-and-edit">
         <h2><span class="text-primary">N</span>ote <span class="text-primary">E</span>ditor:</h2>
         <editor :edit="$store.state.notes[index]" saveButtonText="Save Edits" @save-note="saveEdits"></editor>
+        <button type="button" class="action-btn btn btn-primary" @click="viewSavedNotes">
+            <i class="material-icons align-middle">list</i> Back to saved notes
+        </button>
     </div>   
 </template>
 
@@ -37,6 +40,9 @@ export default {
                 index: parseInt(this.index)
             })
             this.saveNotes()
+        },
+        viewSavedNotes(){
+            this.$router.push('/saved')
         }
     },
     created(){
