@@ -38,7 +38,6 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
 export default {
     name: `editor`,
     data(){
@@ -50,10 +49,11 @@ export default {
             isLastTagRemovable: true
         }
     },
-    props: [
-        'edit',
-        'saveButtonText'
-    ],
+    props: {
+        edit: Object,
+        saveButtonText: String,
+        clearAfterSave: Boolean
+    },
     watch: {
         'note.priority.num': 'updatePriority'
     },
@@ -91,6 +91,19 @@ export default {
             this.alertMessage = `<strong>Note Saved!</strong>`
             this.alertType = `success`
             this.showAlert()
+            if(this.clearAfterSave){
+                this.note = {
+                    title: ``,
+                    text: ``,
+                    time: ``,
+                    priority: {
+                        num: `1`,
+                        class: `note-priority-low`
+                    },
+                    mls: ``,
+                    tags: [`low_priority`]
+                }
+            }
         },
         removeTag(index){
             this.note.tags.splice(index, 1)
@@ -112,9 +125,6 @@ export default {
                     this.isLastTagRemovable = true
                 }
             }
-        },
-        viewSavedNotes(){
-            this.$router.push('./saved')
         }
     },
     computed: {

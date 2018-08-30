@@ -1,7 +1,7 @@
 <template>
     <div id="create-note" class="m-20">
         <h2><span class="text-primary">C</span>reate <span class="text-primary">N</span>ew <span class="text-primary">N</span>ote:</h2>
-        <editor :edit="note" saveButtonText="Create Note" @save-note="createNote"></editor>
+        <editor :edit="note" :clearAfterSave="true" saveButtonText="Create Note" @save-note="createNote"></editor>
         <button type="button" class="action-btn btn btn-primary" @click="viewSavedNotes">
             <i class="material-icons align-middle">list</i> Back to saved notes
         </button>
