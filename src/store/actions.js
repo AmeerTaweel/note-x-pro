@@ -9,16 +9,21 @@ export const loadNotes = ({commit}) => {
     }
 }
 
-// Add one note to the notes array.
+// Add a new note.
 export const addNote = ({commit}, note) => {
     if(note !== null && typeof note !== `undefined`){
         commit(types.ADD_NOTES, [note])
     }
 }
 
-// Remove a note from the notes array.
+// Remove a note.
 export const removeNote = ({commit}, index) => {
     commit(types.REMOVE_NOTE, index)
+}
+
+// Change a note value.
+export const editNote = ({commit}, indexNote) => {
+    commit(types.EDIT_NOTE, indexNote)
 }
 
 // Save notes in the browser cookies.
@@ -26,7 +31,7 @@ export const saveNotes = ({commit}) => {
     commit(types.SAVE_NOTES)
 }
 
-// Load saved notes from cookies.
+// Filter notes by priority, and time.
 export const filterNotes = ({commit}, filter) => {
     commit(types.FILTER_NOTES, filter)
 }

@@ -4,15 +4,19 @@ import * as Cookies from "js-cookie"
 const SAVED_NOTES_PATH = 'savedNotes'
 
 export const mutations = {
-    // Modify the notes array.
+    // Init notes.
     [types.SET_NOTES] (state, notes){
         state.notes = notes
     },
-    // Add to the notes array.
+    // Add a new note.
     [types.ADD_NOTES] (state, notes){
         state.notes.push(...notes)
     },
-    // Remove a note from the notes array.
+    // Change the value of a note.
+    [types.EDIT_NOTE] (state, indexNote){
+        state.notes[indexNote.index] = indexNote.note
+    },
+    // Remove a note.
     [types.REMOVE_NOTE] (state, index){
         state.notes.splice(index, 1)
     },
@@ -20,7 +24,7 @@ export const mutations = {
     [types.SAVE_NOTES] (state){
         Cookies.set(SAVED_NOTES_PATH, state.notes)
     },
-    // Filter notes array.
+    // Filter notes by priority, and time.
     [types.FILTER_NOTES] (state, filter){
         switch(filter){
             // More important first.
