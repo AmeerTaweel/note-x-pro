@@ -1,26 +1,29 @@
-# NoteXPro
+# note-x-pro
 
-NoteXPro is a simple, responsive notepad made with Vue.js and Bootstrap.
+## Project setup
+```
+npm install
+```
 
-## Usage
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
 
-You can visit [NoteXPro Website](https://notexpro-ameer-taweel.firebaseapp.com/ "NoteXPro Website").
+### Compiles and minifies for production
+```
+npm run build
+```
 
-## Features
+### Run your tests
+```
+npm run test
+```
 
-* Modern design.
-* Simple, clean and easy to use.
-* Responsive (Works on various screen sizes).
-* Notes priority can be specified.
-* Notes can be sorted by **priority** and **time**.
-* Notes get stored in the browser cookies.
-* Includes an alert system.
-* Tags can be added to notes to make searching easier.
-* Ability to search notes **easily** and **effeciently**.
-* Includes a note viewer and editor.
-* Uses **Vuex** state management library.
-* Uses **Vue-Router** for navigation.
+### Lints and fixes files
+```
+npm run lint
+```
 
-## License
-
-NoteXPro is distributed under the [MIT License](https://github.com/AmeerTaweel/note-x-pro/blob/master/LICENSE.md).
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
