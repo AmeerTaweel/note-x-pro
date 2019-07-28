@@ -6,6 +6,19 @@ import vuetify from './plugins/vuetify';
 
 Vue.config.productionTip = false
 
+Vue.mixin({
+  data: function() {
+    return {
+      get colorPrimary() {
+        return `#66BB6A`
+      },
+      get colorAccent() {
+        return `#FF5722`
+      }
+    }
+  }
+})
+
 new Vue({
   router,
   store,

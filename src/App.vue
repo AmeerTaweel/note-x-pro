@@ -1,36 +1,42 @@
 <template>
   <v-app>
-    <v-app-bar app>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
+    <v-app-bar :color="colorPrimary" app dark>
+      
+      <v-toolbar-title class="headline text-uppercase noselect">
+        <span class="font-weight-light">Note</span>
+        <span>X</span>
+        <span class="font-weight-light">Pro</span>
       </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn
-        text
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-      >
-        <span class="mr-2">Latest Release</span>
-      </v-btn>
     </v-app-bar>
 
+    <v-btn fixed dark fab bottom right :color="colorAccent">
+      <v-icon>add</v-icon>
+    </v-btn>
+
     <v-content>
-      <HelloWorld/>
+      <router-view/>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld,
-  },
-  data: () => ({
-    //
-  }),
-};
+  name: 'App'
+}
 </script>
+
+<style lang="sass">
+.noselect
+  -webkit-touch-callout: none
+  -webkit-user-select: none
+  -khtml-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+
+// #app
+//   font-family: 'Avenir', Helvetica, Arial, sans-serif
+//   -webkit-font-smoothing: antialiased
+//   -moz-osx-font-smoothing: grayscale
+//   color: #2c3e50
+</style>
