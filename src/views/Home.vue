@@ -154,9 +154,3 @@ export default {
   }
 }
 </script>
-
-<style lang="sass" scoped>
-.word-break
-  word-break: break-all
-</style>
-
