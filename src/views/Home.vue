@@ -26,7 +26,7 @@
                     <p :id="`note${i}text`" class="body-1"></p>
                     <div class="flex-grow-1">
                       <div class="h-100 d-flex align-items-end flex-wrap">
-                        <v-chip class="me-2 mb-2" v-for="(tag, j) in note.tags" :key="j" outlined :color="note.priority.color">{{tag}}</v-chip>
+                        <v-chip class="me-2 mb-2" v-for="(tag, j) in note.tags" :key="j" outlined :color="note.priority.color">#{{tag}}</v-chip>
                       </div>
                     </div>
                   </div>

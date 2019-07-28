@@ -18,7 +18,7 @@
     <div class="display-3 text-center ma-5">{{note.title}}</div>
     <div class="display-1 text-center grey--text m-3">{{note.time}}</div>
     <div class="text-center">
-      <v-chip v-for="(tag, i) in note.tags" :key="i" class="ma-3 noselect" :color="note.priority.color" filter link outlined pill>{{tag}}</v-chip>
+      <v-chip v-for="(tag, i) in note.tags" :key="i" class="ma-3 noselect" :color="note.priority.color" filter link outlined pill>#{{tag}}</v-chip>
     </div>
     <br/>
     <div class="display-1 text-justify m-3">{{note.text}}</div>

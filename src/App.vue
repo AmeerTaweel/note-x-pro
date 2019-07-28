@@ -32,6 +32,10 @@ export default {
       view: {
         route: `/`,
         icon: `home`
+      },
+      create: {
+        route: `/`,
+        icon: `home`
       }
     }
   }),
