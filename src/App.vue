@@ -39,6 +39,9 @@ export default {
       }
     }
   }),
+  created() {
+    this.$store.dispatch(`loadNotes`)
+  },
   computed: {
     currentRoute(){
       return this.$store.state.route
