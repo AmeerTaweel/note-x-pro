@@ -36,6 +36,10 @@ export default {
       create: {
         route: `/`,
         icon: `home`
+      },
+      edit: {
+        route: `/`,
+        icon: `home`
       }
     }
   }),

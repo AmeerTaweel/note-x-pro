@@ -21,6 +21,10 @@ export default new Router({
       path: `/createnote`,
       name: `createnote`,
       component: () => import(/* webpackChunkName: "createnote" */ `./views/CreateNote.vue`)
+    }, {
+      path: `/editnote/:index`,
+      name: `editnote`,
+      component: () => import(/* webpackChunkName: "editnote" */ `./views/EditNote.vue`)
     }
   ]
 })

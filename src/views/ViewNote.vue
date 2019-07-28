@@ -1,7 +1,7 @@
 <template>
   <v-container class="word-break pa-5">
     <div>
-      <v-btn class="ma-3" outlined :color="colorPrimary">Edit</v-btn>
+      <v-btn class="ma-3" outlined :color="colorPrimary" @click="$router.push(`/editnote/${index}`)">Edit</v-btn>
       <v-btn class="ma-3" outlined color="error" @click="deleteDialog = true">Delete</v-btn>
       <v-dialog v-model="deleteDialog" max-width="50%">
         <v-card>
@@ -30,6 +30,7 @@ export default {
   data: () => ({
     note: {},
     deleteDialog: false,
+    index: 0
   }),
   methods: {
     deleteNote(){
@@ -40,7 +41,8 @@ export default {
   },
   created(){
     this.$store.commit(`changeRoute`, `view`)
-    this.note = this.$store.state.notes[this.$route.params.index]
+    this.index = parseInt(this.$route.params.index)
+    this.note = this.$store.state.notes[this.index]
   }
 }
 </script>

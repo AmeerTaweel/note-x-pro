@@ -38,6 +38,9 @@ export default new Vuex.Store({
     addNote(state, note) {
       state.notes.unshift(note)
     },
+    editNote(state, options) {
+      state.notes[options.index] = options.note
+    },
     deleteNote(state, index) {
       state.notes.splice(index, 1)
     },
@@ -58,6 +61,10 @@ export default new Vuex.Store({
     },
     addNote(context, note) {
       context.commit(`addNote`, note)
+      context.commit(`saveNotes`)
+    },
+    editNote(context, options) {
+      context.commit(`editNote`, options)
       context.commit(`saveNotes`)
     },
     deleteNote(context, index) {
