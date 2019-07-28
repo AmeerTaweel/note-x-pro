@@ -2,16 +2,17 @@
   <v-app>
     <v-app-bar :color="colorPrimary" app dark>
       
-      <v-toolbar-title class="headline text-uppercase noselect">
+      <v-toolbar-title class="headline text-uppercase noselect pointer" @click="$router.push(`/`)">
         <span class="font-weight-light">Note</span>
         <span>X</span>
         <span class="font-weight-light">Pro</span>
       </v-toolbar-title>
     </v-app-bar>
-
-    <v-btn fixed dark fab bottom right :color="colorAccent">
-      <v-icon>add</v-icon>
-    </v-btn>
+    <v-fab-transition>
+      <v-btn fixed dark fab bottom right :color="colorAccent" :key="action.icon" @click="$router.push(action.route)">
+        <v-icon>{{action.icon}}</v-icon>
+      </v-btn>
+    </v-fab-transition>
 
     <v-content>
       <router-view/>
@@ -21,7 +22,27 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  data: () => ({
+    actions: {
+      home: {
+        route: `/createnote`,
+        icon: `add`
+      },
+      view: {
+        route: `/`,
+        icon: `home`
+      }
+    }
+  }),
+  computed: {
+    currentRoute(){
+      return this.$store.state.route
+    },
+    action(){
+      return this.actions[this.currentRoute]
+    }
+  }
 }
 </script>
 
@@ -34,9 +55,9 @@ export default {
   -ms-user-select: none
   user-select: none
 
-// #app
-//   font-family: 'Avenir', Helvetica, Arial, sans-serif
-//   -webkit-font-smoothing: antialiased
-//   -moz-osx-font-smoothing: grayscale
-//   color: #2c3e50
+.word-break
+  word-break: break-all
+
+.pointer
+  cursor: pointer
 </style>

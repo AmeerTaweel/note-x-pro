@@ -16,7 +16,7 @@
       <v-flex v-for="(note, i) in notes" :key="i" xs12 md6 lg4>
         <div class="pa-2 h-100">
           <v-hover class="h-100" v-slot:default="{ hover }">
-            <v-card class="noselect word-break" v-ripple :elevation="hover ? 12 : 2">
+            <v-card class="noselect word-break" v-ripple :elevation="hover ? 12 : 2" @click="$router.push(`/viewnote/${i}`)">
               <div class="w-100 h-100 d-flex">
                 <v-sheet tile class="rounded-left" :color="note.priority.color">&nbsp;&nbsp;</v-sheet>
                 <div class="flex-grow-1">
@@ -96,6 +96,9 @@ export default {
         element.innerHTML = `${text.substr(0, chars - 3)}...`
       }
     }
+  },
+  created(){
+    this.$store.commit(`changeRoute`, `home`)
   },
   mounted(){
     this.$nextTick(() => {
