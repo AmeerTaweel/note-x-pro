@@ -8,7 +8,7 @@ const NOTES_PATH = `NOTE_X_PRO`
 
 export default new Vuex.Store({
   state: {
-    route: `home`,
+    action: `create`,
     notes: []
   },
   mutations: {
@@ -32,8 +32,8 @@ export default new Vuex.Store({
         return a.mls - b.mls
       })
     },
-    changeRoute(state, newRoute) {
-      state.route = newRoute
+    changeAction(state, action) {
+      state.action = action
     },
     addNote(state, note) {
       state.notes.unshift(note)

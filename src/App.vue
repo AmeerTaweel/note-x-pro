@@ -17,6 +17,22 @@
     <v-content>
       <router-view/>
     </v-content>
+
+    <v-footer dark padless class="white--text text-center">
+      <v-card flat tile class="w-100 h-100 grey darken-3">
+        <v-card-text>
+          <v-btn v-for="(site, i) in sites" :key="i" class="no-underline mx-4" icon :href="site.url" target="_blank" rel="noopener">
+            <v-icon>{{site.icon}}</v-icon>
+          </v-btn>
+        </v-card-text>
+
+        <v-divider></v-divider>
+
+        <v-card-text>
+          {{ new Date().getFullYear() }} — <strong>Ameer Taweel</strong>
+        </v-card-text>
+      </v-card>
+    </v-footer>
   </v-app>
 </template>
 
@@ -25,33 +41,35 @@ export default {
   name: 'App',
   data: () => ({
     actions: {
-      home: {
+      create: {
         route: `/createnote`,
         icon: `add`
       },
-      view: {
-        route: `/`,
-        icon: `home`
-      },
-      create: {
-        route: `/`,
-        icon: `home`
-      },
-      edit: {
+      home: {
         route: `/`,
         icon: `home`
       }
-    }
+    },
+    sites: [{
+      url: `https://linkedin.com/in/ameer-taweel/`,
+      icon: `fab fa-linkedin`
+    }, {
+      url: `https://github.com/AmeerTaweel/`,
+      icon: `fab fa-github`
+    }, {
+      url: `http://ameer-taweel.web.app/`,
+      icon: `fab fa-edge`
+    }]
   }),
   created() {
     this.$store.dispatch(`loadNotes`)
   },
   computed: {
-    currentRoute(){
-      return this.$store.state.route
+    currentAction(){
+      return this.$store.state.action
     },
     action(){
-      return this.actions[this.currentRoute]
+      return this.actions[this.currentAction]
     }
   }
 }
@@ -71,4 +89,7 @@ export default {
 
 .pointer
   cursor: pointer
+
+.no-underline:hover
+    text-decoration: none
 </style>

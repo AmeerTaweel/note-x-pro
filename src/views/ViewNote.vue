@@ -40,7 +40,7 @@ export default {
     }
   },
   created(){
-    this.$store.commit(`changeRoute`, `view`)
+    this.$store.commit(`changeAction`, `home`)
     this.index = parseInt(this.$route.params.index)
     this.note = this.$store.state.notes[this.index]
   }

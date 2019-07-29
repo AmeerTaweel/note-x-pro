@@ -14,7 +14,7 @@ export default {
       }
   },
   created(){
-    this.$store.commit(`changeRoute`, `create`)
+    this.$store.commit(`changeAction`, `home`)
   },
   components: {
     Editor

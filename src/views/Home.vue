@@ -98,7 +98,7 @@ export default {
     }
   },
   created(){
-    this.$store.commit(`changeRoute`, `home`)
+    this.$store.commit(`changeAction`, `create`)
   },
   mounted(){
     this.$nextTick(() => {

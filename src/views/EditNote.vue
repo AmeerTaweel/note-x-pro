@@ -20,7 +20,7 @@ export default {
       }
   },
   created(){
-    this.$store.commit(`changeRoute`, `edit`)
+    this.$store.commit(`changeAction`, `home`)
     this.index = parseInt(this.$route.params.index)
   },
   components: {
